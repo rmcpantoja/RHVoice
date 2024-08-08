@@ -1,0 +1,40 @@
+# Copyright (C) 2024  Mateo Cedillo <angelitomateocedillo@gmail.com>
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Lesser General Public License as published by
+# the Free Software Foundation, either version 2.1 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Lesser General Public License for more details.
+
+# You should have received a copy of the GNU Lesser General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+define LetterLseq [
+a:a1 |
+{ch}:[ch a1] |
+h:[h a1] |
+i:i1 |
+k:[k a1] |
+l:[l a1] |
+{ll}:[ll a1] |
+m:[m a1] |
+n:[n a1] |
+ñ:[ni a1] |
+p:[p a1] |
+r:[r a1] |
+s:[s a1] |
+{sh}:[sh a1] |
+t:[t a1] |
+{ts}:[ts a1] |
+u:u1 |
+w:[w a1] |
+y:[y a1] |
+z:[z a1]] ;
+
+define TranscribeLetterSequence LetterLseq -> || _ ;
+
+regex TranscribeLetterSequence ; 

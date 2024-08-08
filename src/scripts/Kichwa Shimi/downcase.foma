@@ -1,0 +1,40 @@
+# Copyright (C) 2024  Mateo Cedillo <angelitomateocedillo@gmail.com>
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Lesser General Public License as published by
+# the Free Software Foundation, either version 2.1 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Lesser General Public License for more details.
+
+# You should have received a copy of the GNU Lesser General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+define QuichuaDowncase 
+A -> a || _ ,, 
+{Ch} -> {ch} || _ ,, 
+H -> h || _ ,, 
+I -> i || _ ,, 
+K -> k || _ ,, 
+L -> l || _ ,, 
+{Ll} -> {ll} || _ ,, 
+M -> m || _ ,, 
+N -> n || _ ,, 
+Ñ -> ñ || _ ,, 
+P -> p || _ ,, 
+R -> r || _ ,, 
+S -> s || _ ,, 
+{Sh} -> {sh} || _ ,, 
+T -> t || _ ,, 
+{Ts} -> {ts} || _ ,, 
+U -> u || _ ,, 
+W -> w || _ ,, 
+Y -> y || _ ,, 
+Z -> z || _ ,, 
+{Zh} -> {zh} || _ ; 
+
+regex 
+QuichuaDowncase ; 
