@@ -33,7 +33,8 @@ t:[t a1] |
 u:u1 |
 w:[w a1] |
 y:[y a1] |
-z:[z a1]] ;
+z:[z a1]] |
+{zh}:[z h a1]] ,
 
 define TranscribeLetterSequence LetterLseq -> || _ ;
 
