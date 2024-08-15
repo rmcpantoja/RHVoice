@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     branches:
-      - 'master'
+      [master , build-only ]
 
   pull_request:
     branches:
@@ -65,6 +65,11 @@ jobs:
 
       - name: build
         run: scons -j2
+      - name: Upload build libraries
+        uses: actions/upload-artifact@v3
+        with:
+          name: libs
+          path: local/lib
 
   windowsBuild:
     name: Windows build
@@ -85,10 +90,10 @@ jobs:
         run: python -m pip install --upgrade pip lxml scons
 
       - name: build
-        run: scons -j2
+        run: scons -j2 dev=true
 
-      - name: Upload packages archive
+      - name: Upload 64-bit build libraries
         uses: actions/upload-artifact@v3
         with:
-          name: packages
-          path: build/windows/packages
+          name: libs
+          path: build/windows/x86_64
