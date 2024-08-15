@@ -64,11 +64,11 @@ jobs:
           sudo apt-get -q -y install scons libpulse-dev libao-dev portaudio19-dev libspeechd-dev
 
       - name: build
-        run: scons -j2
+        run: scons -j2 dev=true
       - name: Upload build libraries
         uses: actions/upload-artifact@v3
         with:
-          name: libs
+          name: libs_linux
           path: local/lib
 
   windowsBuild:
