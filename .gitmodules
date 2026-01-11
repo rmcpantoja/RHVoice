@@ -394,3 +394,6 @@
 [submodule "data/voices/alena-blr"]
 	path = data/voices/alena-blr
 	url = https://github.com/RHVoice/alena-blr.git
+[submodule "src/scripts/Slovak"]
+	path = src/scripts/Slovak
+	url = https://github.com/RHVoice/Slovak-src.git
