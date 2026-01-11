@@ -367,17 +367,29 @@ class diphone_prompt_selector(prompt_selector):
 		self.infile="sentences"
 		prompt_selector.__init__(self,conf)
 
+	def set_chunker(self, iterable, size):
+		chunk=[]
+		for item in iterable:
+			chunk.append(item)
+			if len(chunk)==size:
+				yield chunk
+				chunk=[]
+		if chunk:
+			yield chunk
+
 	def determine_units(self,sentences):
-		with codecs.open("ssml","w","utf-8") as f_out:
-			f_out.write('<speak xml:lang="{}">\n'.format(self.language))
-			for sent in sentences:
-				f_out.write("<s>{}</s>\n".format(sent.text))
-			f_out.write("</speak>\n")
-		subprocess.check_call(["local/bin/RHVoice-transcribe-sentences","ssml","transcription"])
-		with codecs.open("transcription","r","utf-8") as f_in:
-			for s,l in zip(sentences,f_in):
-				phones=l.split()
-				s.units.extend(phones[i-1]+"+"+phones[i] for i in range(1,len(phones)))
+		CHUNK_SIZE = 200000
+		for chunk in set_chunker(sentences, CHUNK_SIZE):
+			with codecs.open("ssml","w","utf-8") as f_out:
+				f_out.write('<speak xml:lang="{}">\n'.format(self.language))
+				for sent in chunk:
+					f_out.write("<s>{}</s>\n".format(sent.text))
+				f_out.write("</speak>\n")
+			subprocess.check_call(["local/bin/RHVoice-transcribe-sentences","ssml","transcription"])
+			with codecs.open("transcription","r","utf-8") as f_in:
+				for s,l in zip(chunk,f_in):
+					phones=l.split()
+					s.units.extend(phones[i-1]+"+"+phones[i] for i in range(1,len(phones)))
 
 def select_prompts(conf):
 	sel=diphone_prompt_selector(conf) if conf["language"] else bigram_prompt_selector(conf)
