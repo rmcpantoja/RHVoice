@@ -379,7 +379,7 @@ class diphone_prompt_selector(prompt_selector):
 
 	def determine_units(self,sentences):
 		CHUNK_SIZE = 200000
-		for chunk in set_chunker(sentences, CHUNK_SIZE):
+		for chunk in self.set_chunker(sentences, CHUNK_SIZE):
 			with codecs.open("ssml","w","utf-8") as f_out:
 				f_out.write('<speak xml:lang="{}">\n'.format(self.language))
 				for sent in chunk:
